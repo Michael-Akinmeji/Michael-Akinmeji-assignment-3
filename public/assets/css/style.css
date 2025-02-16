@@ -19,7 +19,7 @@ a {
   font-weight: 400;
   text-decoration: none;
   color: #111111;
-  transition: 0.2s;
+  transition: all 0.2s ease-in-out;
 }
 
 a:hover {
@@ -74,9 +74,25 @@ h6 {
 header {
   font-family: "Josefin Sans", sans-serif;
 }
-
 header nav ul {
   display: none;
+}
+header nav ul li {
+  margin: 0 15px;
+  position: relative;
+  line-height: 24px;
+}
+header nav ul li a {
+  font-family: "Josefin Sans", sans-serif;
+  color: #324360;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 900;
+  transition: all 0.3s ease-in-out;
+}
+header nav ul li a:hover {
+  color: #35c4ce;
 }
 
 .top-logo {
@@ -90,27 +106,30 @@ article {
   display: flex;
   flex-wrap: wrap;
 }
-
-.image-part {
+article .image-part {
   margin-bottom: 10px;
 }
-
-.post-title {
+article .image-part img {
+  transition: all 3.5s ease-in-out;
+}
+article .image-part img:hover {
+  transform: scale(1.5);
+}
+article .content-part {
+  flex: 1;
+  padding-left: 50px;
+}
+article .post-title {
   margin-top: 0;
 }
-
-.post-title a {
+article .post-title a {
   color: #324360;
   text-transform: uppercase;
   font-size: 26px;
   font-weight: 900;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  line-height: 1.3em;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
-
-.post-title a:hover {
+article .post-title a:hover {
   color: #35c4ce;
 }
 
@@ -208,7 +227,7 @@ footer {
     position: absolute;
     z-index: 9999;
     left: 0;
-    background: #f0f0f0;
+    background: #eaf2ff;
     transition: all 0.2s ease-out;
   }
   header nav ul li:hover ul {

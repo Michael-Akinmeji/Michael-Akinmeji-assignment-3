@@ -1,10 +1,27 @@
 /* This is the original example. You can take all css styles from here. */
+// Variables
+$primary-color: #324360;
+$secondary-color: #35c4ce;
+$text-color: #787878;
+$background-color: #eaf2ff;
+$font-primary: 'Josefin Sans', sans-serif;
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin transition($time) {
+    transition: all $time ease-in-out;
+}
 
 
 body {
     font-family: Quando;
     font-size: 15px;
-    color: #787878;
+    color: $text-color;
 }
 img {
     max-width: 100%;
@@ -18,7 +35,8 @@ a {
     font-weight: 400;
     text-decoration: none;
     color: #111111;
-    transition: .20s;
+    @include transition(0.2s);
+    // transition: .20s;
 }
 a:hover {
     color: #999999;
@@ -31,7 +49,7 @@ h5,
 h6 {
     margin-top: 25px;
     margin-bottom: 20px;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: $font-primary;
     font-weight: 400;
     line-height: 1.3em;
     word-wrap: break-word;
@@ -65,11 +83,35 @@ h6 {
 
 /* header and main nav */
 header {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: $font-primary;
+
+    nav {
+        ul {
+            display: none;
+
+            li {
+                margin: 0 15px;
+                position: relative;
+                line-height: 24px;
+
+                a {
+                    font-family: $font-primary;
+                    color: $primary-color;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    font-weight: 900;
+                    @include transition(0.3s);
+
+                    &:hover {
+                        color: $secondary-color;
+                    }
+                }
+            }
+        }
+    }
 }
-header nav ul {
-    display: none;
-}
+
 
 .top-logo {
     width: 200px;
@@ -79,39 +121,75 @@ header nav ul {
 
 
 /* posts */
+// article {
+//     margin-bottom: 50px;
+//     display: flex;
+//     flex-wrap: wrap;
+// }
+// .image-part {
+//     margin-bottom: 10px;
+// }
+
+// .post-title {
+//     margin-top: 0;
+// }
+// .post-title a {
+//     color: $primary-color;
+//     text-transform: uppercase;
+//     font-size: 26px;
+//     font-weight: 900;
+//     margin-top: 15px;
+//     margin-bottom: 15px;
+//     line-height: 1.3em;
+//     transition: all .3s ease;
+// }
+// .post-title a:hover {
+//     color: $secondary-color;
+// }
+
 article {
     margin-bottom: 50px;
     display: flex;
     flex-wrap: wrap;
-}
-.image-part {
-    margin-bottom: 10px;
-}
 
-.post-title {
-    margin-top: 0;
-}
-.post-title a {
-    color: #324360;
-    text-transform: uppercase;
-    font-size: 26px;
-    font-weight: 900;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    line-height: 1.3em;
-    transition: all .3s ease;
-}
-.post-title a:hover {
-    color: #35c4ce;
-}
+    .image-part {
+        margin-bottom: 10px;
+        img {
+            @include transition(3.5s);
 
+            &:hover {
+                transform: scale(1.5);
+            }
+        }
+    }
 
+    .content-part {
+        flex: 1;
+        padding-left: 50px;
+    }
+
+    .post-title {
+        margin-top: 0;
+
+        a {
+            color: $primary-color;
+            text-transform: uppercase;
+            font-size: 26px;
+            font-weight: 900;
+            @include transition(0.3s);
+
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+    }
+}
 
 /* footer */
 footer {
     padding: 30px 0;
     text-align: center;
-    background: #eaf2ff;
+    background: $background-color;
     color: #989898;
 }
 #footer a {
@@ -169,24 +247,24 @@ footer {
     }
     header nav a {
         font-family: 'Josefin Sans', sans-serif;
-        color: #324360;
+        color: $primary-color;
         letter-spacing: 1px;
         text-transform: uppercase;
         font-size: 12px;
         font-weight: 900;
     }
     header nav a:hover {
-        color: #35c4ce;
+        color: $secondary-color
     }
     header nav li.menu-item-has-children > a::after {
         margin-left: 7px;
         font-family: 'FontAwesome';
         font-size: 13px;
-        color: #324360;
+        color: $primary-color;
         content: '\f078';
     }
     .current-menu-item a {
-        border-bottom: 2px solid #324360;
+        border-bottom: 2px solid $primary-color;
     }
     /* sub nav */
     header nav ul ul {
@@ -196,7 +274,7 @@ footer {
         position: absolute;
         z-index: 9999;
         left: 0;
-        background: #f0f0f0;
+        background: $background-color;
         transition: all 0.2s ease-out;
     }
     header nav ul li:hover ul {
@@ -221,7 +299,6 @@ footer {
         background: #ffffff;
         color: #000; 
     }
-
 
 
     /* posts */
